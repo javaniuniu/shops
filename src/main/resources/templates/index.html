@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>主页</title>
+    <div th:replace="common_cssjs"></div>
+
+</head>
+<body>
+
+<div th:replace="common/header::nav"></div>
+
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>
+            小小商店
+        </h1>
+
+        <p>
+            Spring MVC + Spring Data JPA + Bootstrap 3
+        </p>
+
+        <p>
+            <a class="btn btn-primary btn-large" href="http://github.com/vito16/shop">Github</a>
+        </p>
+    </div>
+
+</div>
+<div th:replace="common/footer::copy"></div>
+</body>
+</html>
