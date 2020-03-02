@@ -12,6 +12,7 @@ import com.javaniuniu.shops.service.OrderService;
 import com.javaniuniu.shops.service.UserAddressService;
 import com.javaniuniu.shops.service.UserService;
 import com.javaniuniu.shops.util.CartItem;
+import com.javaniuniu.shops.util.CartUtil;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -150,11 +151,11 @@ public class OrderController {
         return "order/orderingSuccess";
     }
 
-    /*@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
     public String viewOrder(@PathVariable Integer id, Model model) {
         model.addAttribute("order", orderService.findById(id));
         return "order/orderDetail";
-    }*/
+    }
 
     @RequestMapping(value = "/pay/{id}", method = RequestMethod.GET)
     @ResponseBody

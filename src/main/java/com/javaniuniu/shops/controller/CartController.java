@@ -1,11 +1,11 @@
 package com.javaniuniu.shops.controller;
 
 import com.google.common.collect.Maps;
-import com.javaniuniu.shops.common.ToString;
 import com.javaniuniu.shops.common.web.JsonResult;
 import com.javaniuniu.shops.model.Product;
 import com.javaniuniu.shops.service.ProductService;
 import com.javaniuniu.shops.util.CartItem;
+import com.javaniuniu.shops.util.CartUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +37,10 @@ public class CartController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String cart(HttpSession session, Model model) {
         HashMap<Integer, CartItem> cartItems = (HashMap<Integer, CartItem>) session.getAttribute(CartUtil.CART);
-        if (cartItems == null)
+        if(cartItems==null){
             cartItems = Maps.newHashMap();
-        model.addAttribute("cartItems", cartItems);
+        }
+        model.addAttribute("cartItems",cartItems);
         return "order/cart";
     }
 

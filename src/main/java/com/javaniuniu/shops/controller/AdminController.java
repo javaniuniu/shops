@@ -9,9 +9,11 @@ import com.javaniuniu.shops.service.OrderService;
 import com.javaniuniu.shops.util.AdminUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 
@@ -21,7 +23,7 @@ import java.util.Date;
  * @GitHub https://github.com/minplemon
  * @Date: 2020/2/27 7:36 PM
  */
-@RestController
+@Controller
 @Slf4j
 //TODO Controller 使用restController 重写
 @RequestMapping("/admin")
@@ -47,7 +49,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login() {
+    public String login(HttpServletRequest request, HttpSession session) {
         return "admin/adminLogin";
     }
 

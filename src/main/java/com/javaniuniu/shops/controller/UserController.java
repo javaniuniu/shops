@@ -2,6 +2,7 @@ package com.javaniuniu.shops.controller;
 
 import com.javaniuniu.shops.common.AppConfig;
 import com.javaniuniu.shops.common.web.JsonResult;
+import com.javaniuniu.shops.model.News;
 import com.javaniuniu.shops.model.Remember;
 import com.javaniuniu.shops.model.User;
 import com.javaniuniu.shops.model.UserAddress;
@@ -9,6 +10,7 @@ import com.javaniuniu.shops.service.OrderService;
 import com.javaniuniu.shops.service.RememberService;
 import com.javaniuniu.shops.service.UserAddressService;
 import com.javaniuniu.shops.service.UserService;
+import com.javaniuniu.shops.util.AdminUtil;
 import com.javaniuniu.shops.util.CookieUtil;
 import com.javaniuniu.shops.util.UserUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -62,6 +65,7 @@ public class UserController {
         return "user/userReg";
     }
 
+    @PostMapping(value = "/reg")
     public String doReg(@Valid User user, Model model, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             List<FieldError> fieldErrors = bindingResult.getFieldErrors();
@@ -189,5 +193,21 @@ public class UserController {
         userAddressService.deleteById(id);
         log.debug("收货地址删除成功...");
         return "success";
+    }
+
+    @RequestMapping(value = "/userAddress/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView edit(ModelAndView model, @PathVariable Integer id) {
+        UserAddress userAddress = userAddressService.findById(id);
+        model.addObject("userAddress", userAddress);
+        model.setViewName("/user/userAddressEdit");
+        return model;
+    }
+
+    @RequestMapping(value = "/userAddress/edit", method = RequestMethod.POST)
+    public ModelAndView doEdit(ModelAndView model, UserAddress userAddress, HttpSession session) {
+        userAddress.setUser(UserUtil.getUserFromSession(session));
+        userAddressService.save(userAddress);
+        model.setViewName("redirect:/user/userAddress");
+        return model;
     }
 }

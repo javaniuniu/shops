@@ -2,9 +2,15 @@ package com.javaniuniu.shops.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * @Author: java牛牛
@@ -15,6 +21,8 @@ import java.io.Serializable;
 @Setter
 @Getter
 @Entity
+//@DynamicUpdate
+//@DynamicInsert
 @Table(name = "t_useraddress")
 public class UserAddress extends AbstractEntity {
     @Column(columnDefinition = "VARCHAR(64) DEFAULT NULL COMMENT '收货地址'")
@@ -32,4 +40,12 @@ public class UserAddress extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+//    @UpdateTimestamp
+//    @Column(name = "update_time", columnDefinition = "datetime")
+//    private Timestamp updateTime;
+//
+//    @CreationTimestamp
+//    @Column(name = "create_time", columnDefinition = "datetime",  updatable = false)
+//    private Timestamp createTime;
 }

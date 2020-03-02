@@ -40,4 +40,5 @@ public class NewsService extends BaseService {
         return newsDao.getOne(id);
     }
 
+
 }

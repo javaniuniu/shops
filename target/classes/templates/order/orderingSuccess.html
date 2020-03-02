@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>下单成功</title>
+
+    <div th:replace="common_cssjs"></div>
+    <link type="text/css" rel="stylesheet" media="screen" th:href="@{/css/product.css}">
+</head>
+
+<body>
+<div th:replace="common/header::nav"></div>
+<div class="container">
+    <div class="row">
+        <div id="delSuccess" class="alert alert-success">下单成功...</div>
+    </div>
+    <div class="row text-center">
+            <a class="btn btn-info" href="/product/">继续购买</a>
+            <a class="btn btn-info" href="/user/order/">查看订单</a>
+    </div>
+</div>
+
+<div th:replace="common/footer::copy"></div>
+
+</body>
+</html>

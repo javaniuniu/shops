@@ -1,6 +1,8 @@
 package com.javaniuniu.shops.model;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -29,12 +31,12 @@ public class AbstractEntity implements Serializable {
     protected Integer id;
 
 
-    @CreatedDate
-    @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'")
+    @CreationTimestamp
+    @Column(name = "create_time", updatable = false,columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'")
     protected Date createTime;
 
 
-    @LastModifiedDate
-    @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'")
+    @UpdateTimestamp
+    @Column(name = "update_time",columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'")
     protected Date updateTime;
 }

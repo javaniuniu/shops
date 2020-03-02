@@ -2,11 +2,16 @@ package com.javaniuniu.shops.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +26,8 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
+//@DynamicUpdate
+//@DynamicInsert
 @Table(name = "t_order")
 public class Order extends AbstractEntity {
 
@@ -50,12 +57,15 @@ public class Order extends AbstractEntity {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems;
 
+    @UpdateTimestamp
     @Column(columnDefinition = "DATETIME DEFAULT COMMENT '付款时间'")
     private Date payTime;//付款时间
 
+    @UpdateTimestamp
     @Column(columnDefinition = "DATETIME DEFAULT COMMENT '发货时间'")
     private Date shipTime;//发货时间
 
+    @UpdateTimestamp
     @Column(columnDefinition = "DATETIME DEFAULT COMMENT '确认收货时间'")
     private Date confirmTime;//确认收货时间
 
@@ -67,4 +77,12 @@ public class Order extends AbstractEntity {
 
     @Column(columnDefinition = "DOUBLE NOT NULL COMMENT '总价'")
     private Double totalPrice;//总价
+
+//    @UpdateTimestamp
+//    @Column(name = "update_time", columnDefinition = "datetime")
+//    private Timestamp updateTime;
+//
+//    @CreationTimestamp
+//    @Column(name = "create_time", columnDefinition = "datetime",  updatable = false)
+//    private Timestamp createTime;
 }

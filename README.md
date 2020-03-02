@@ -24,12 +24,16 @@
 - 数据库相关配置：jdbc.***
 - 初始化数据脚本在`/src/main/resources/sql/`下
 - 管理员:admin/123456
-- 用户:vito16/123456
-
+- 用户:javaniuniu/123456
+- 1.0版本（完成）
+- 1.1 完成TODO
+- 1.3 增加redis
 - 2.2版本，通过spring session 做session缓存
 - 3.0版本, 通过redis 做session缓存
-
-
+- ....
+- 最终 结合sc-whorl
 
 参考文档
 - [SpringMVC——redirect重定向跳转传值](https://www.cnblogs.com/jpfss/p/9542786.html)
+- [Controller 数据处理示例(Model ModelAndView redirect)](./controller.md)
+- [model注解使用参考](https://github.com/minplemon/springboot-buckets/tree/master/springboot-jpa)
