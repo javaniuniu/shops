@@ -31,9 +31,9 @@ public class FileController {
     @Value("${app.upload.location}")
     public String uploadingDir;
 
-    @RequestMapping(value = "/{fileName}",method = RequestMethod.GET)
-    public String showImage(@PathVariable String fileName, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
-        File file = new File(uploadingDir+"/"+fileName);
+    @RequestMapping(value = "/{fileName}", method = RequestMethod.GET)
+    public String showImage(@PathVariable String fileName, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+        File file = new File(uploadingDir + "/" + fileName);
         BufferedImage bi = ImageIO.read(new FileInputStream(file));
         ServletOutputStream out = response.getOutputStream();
         ImageIO.write(bi, "jpg", out);

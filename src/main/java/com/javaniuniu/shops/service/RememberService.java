@@ -21,11 +21,11 @@ public class RememberService {
         rememberRepository.save(remember);
     }
 
-    public void delete(String uuid){
+    public void delete(String uuid) {
         rememberRepository.deleteById(uuid);
     }
 
-    public Remember findById(String uuid){
+    public Remember findById(String uuid) {
         return rememberRepository.getOne(uuid);
     }
 }

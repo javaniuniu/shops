@@ -31,7 +31,7 @@ public class RedisServerInitializer implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         String host = redisProperties.getHost();
         int port = redisProperties.getPort();
-        JedisPool pool = new JedisPool(host,port);
+        JedisPool pool = new JedisPool(host, port);
         try {
             Jedis jedis = pool.getResource();
             jedis.close();

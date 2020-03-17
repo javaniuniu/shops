@@ -21,7 +21,8 @@ import java.util.Map;
  * 购物车工具类
  */
 public class CartUtil {
-    public static final String CART = Constants.CART;;
+    public static final String CART = Constants.CART;
+    ;
 
     private static Logger logger = LoggerFactory.getLogger(CartUtil.class);
 
@@ -34,18 +35,18 @@ public class CartUtil {
      */
     // TODO synchronized
     public static synchronized void saveProductToCart(HttpSession session, Product product, Integer total) {
-        Map<Integer, CartItem> cartItemMap =(HashMap<Integer, CartItem>) session.getAttribute(CART);
-        CartItem ci = new CartItem(product,total);
-        if (cartItemMap ==null)
-            cartItemMap = new HashMap<Integer,CartItem>();
+        Map<Integer, CartItem> cartItemMap = (HashMap<Integer, CartItem>) session.getAttribute(CART);
+        CartItem ci = new CartItem(product, total);
+        if (cartItemMap == null)
+            cartItemMap = new HashMap<Integer, CartItem>();
         //判断当前购物车中是否包含此商品
         if (cartItemMap.containsKey(product.getId())) {
             CartItem currentCi = cartItemMap.get(product.getId());
-            currentCi.setTotal(currentCi.getTotal()+total);
-            cartItemMap.put(product.getId(),currentCi);
-        }else {
-            cartItemMap.put(product.getId(),ci);
-            session.setAttribute(CART,cartItemMap);
+            currentCi.setTotal(currentCi.getTotal() + total);
+            cartItemMap.put(product.getId(), currentCi);
+        } else {
+            cartItemMap.put(product.getId(), ci);
+            session.setAttribute(CART, cartItemMap);
         }
 
     }
@@ -58,9 +59,9 @@ public class CartUtil {
      */
     public static synchronized void deleteProductFromCart(HttpSession session, Integer productId) {
         Map<Integer, CartItem> cartItemMap = (HashMap<Integer, CartItem>) session.getAttribute(CART);
-        if (cartItemMap!=null)
+        if (cartItemMap != null)
             cartItemMap.remove(productId);
-        session.setAttribute(CART,cartItemMap);
+        session.setAttribute(CART, cartItemMap);
     }
 
     /**
@@ -70,17 +71,17 @@ public class CartUtil {
      */
     public static synchronized void cleanCart(HttpSession session) {
         Map<Integer, CartItem> cartItemMap = (HashMap<Integer, CartItem>) session.getAttribute(CART);
-        if (cartItemMap!=null)
+        if (cartItemMap != null)
             cartItemMap.clear();
-        logger.debug("清空购物车 ： cart :"+cartItemMap);
+        logger.debug("清空购物车 ： cart :" + cartItemMap);
         session.setAttribute(CART, cartItemMap);
     }
 
     public static List<OrderItem> getOrderItemFromCart(HttpSession session) {
         Map<Integer, CartItem> cartItemMap = (HashMap<Integer, CartItem>) session.getAttribute(CART);
-        logger.debug("获取商品信息 ： cart :"+cartItemMap);
+        logger.debug("获取商品信息 ： cart :" + cartItemMap);
         List<OrderItem> oiList = new ArrayList<OrderItem>();
-        for(CartItem ci:cartItemMap.values()){
+        for (CartItem ci : cartItemMap.values()) {
             OrderItem oi = new OrderItem();
             oi.setProduct(ci.getProduct());
             oi.setQuantity(ci.getTotal());

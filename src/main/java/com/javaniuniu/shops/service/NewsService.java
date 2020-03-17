@@ -36,6 +36,7 @@ public class NewsService extends BaseService {
         page.setTotalCount(newsDao.count());
         return page.getResult();
     }
+
     public News findById(Integer id) {
         return newsDao.getOne(id);
     }

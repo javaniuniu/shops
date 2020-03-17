@@ -38,7 +38,7 @@ public class NewsAdminController {
     public ModelAndView index(ModelAndView model, HttpServletRequest request) {
         Page<News> page = new Page<News>(request);
         newsService.findNews(page);
-        model.addObject("page",page);
+        model.addObject("page", page);
         model.setViewName("admin/news/newsAdmin");
         return model;
     }

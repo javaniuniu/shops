@@ -32,11 +32,11 @@ public class AbstractEntity implements Serializable {
 
 
     @CreationTimestamp
-    @Column(name = "create_time", updatable = false,columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'")
+    @Column(name = "create_time", updatable = false, columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'")
     protected Date createTime;
 
 
     @UpdateTimestamp
-    @Column(name = "update_time",columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'")
+    @Column(name = "update_time", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'")
     protected Date updateTime;
 }

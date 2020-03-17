@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AuthenticationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if(UserUtil.getUserFromSession(request.getSession())==null){
+        if (UserUtil.getUserFromSession(request.getSession()) == null) {
             log.info("用户未登录,跳转到登录页面.");
             response.sendRedirect("/user/login");
             return false;

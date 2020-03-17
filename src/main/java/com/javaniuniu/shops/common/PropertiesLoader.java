@@ -49,6 +49,7 @@ public class PropertiesLoader {
         }
         return "";
     }
+
     /**
      * 取出String类型的Property，但以System的Property优先,如果都为Null则抛出异常.
      */
@@ -62,12 +63,14 @@ public class PropertiesLoader {
 
     /**
      * 判断是否含有制定key的属性
+     *
      * @param key
      * @return
      */
-    public Boolean havaProperty(String key){
+    public Boolean havaProperty(String key) {
         return !getProperty(key).isEmpty();
     }
+
     /**
      * 取出String类型的Property，但以System的Property优先.如果都为Null则返回Default值.
      */

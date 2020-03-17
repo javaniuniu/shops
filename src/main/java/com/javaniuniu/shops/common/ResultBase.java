@@ -27,22 +27,22 @@ public class ResultBase implements Serializable {
     private String message;
 
 
-    public void setToFail(){
+    public void setToFail() {
         this.message = "未知异常";
         this.status = Status.FAIL;
     }
 
-    public void setToFail(String message){
+    public void setToFail(String message) {
         this.message = message;
         this.status = Status.FAIL;
     }
 
-    public void setToSuccess(){
+    public void setToSuccess() {
         this.message = "成功";
         this.status = Status.SUCCESS;
     }
 
-    public void setToSuccess(String message){
+    public void setToSuccess(String message) {
         this.message = message;
         this.status = Status.SUCCESS;
     }

@@ -1,7 +1,6 @@
 package com.javaniuniu.shops.common;
 
 
-
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import javassist.*;
@@ -78,7 +77,9 @@ public class ToString {
     private static final char SEPARATOR_CHAR_ASTERISK = '*';
     private static final String DATE_FORMART = "yyyy-MM-dd HH:mm:ss";
     private static final Logger logger = LoggerFactory.getLogger(ToString.class);
-    /** 打印生成源代码 */
+    /**
+     * 打印生成源代码
+     */
     public static boolean logSource = false;
 
     public static String dumpClass = null;
@@ -148,8 +149,8 @@ public class ToString {
     /**
      * map tostring 注意避免循环引用
      *
-     * @param map map
-     * @param size 打印entry个数
+     * @param map      map
+     * @param size     打印entry个数
      * @param maskKeys 需要mask的key列表
      * @return
      */
@@ -528,29 +529,42 @@ public class ToString {
         String toString(Object source);
     }
 
-    /** 标注在getter上,标识此属性不会输出 */
+    /**
+     * 标注在getter上,标识此属性不会输出
+     */
     @Target({ElementType.METHOD, ElementType.FIELD})
     @Retention(RUNTIME)
     @Documented
-    public static @interface Invisible {}
+    public static @interface Invisible {
+    }
 
-    /** 标注在getter上,标识此属性会被mask,只支持String、Map类型 */
+    /**
+     * 标注在getter上,标识此属性会被mask,只支持String、Map类型
+     */
     @Target({ElementType.METHOD, ElementType.FIELD})
     @Retention(RUNTIME)
     @Documented
     public static @interface Maskable {
-        /** 是否全部mask,只支持String */
+        /**
+         * 是否全部mask,只支持String
+         */
         boolean maskAll() default false;
 
-        /** 标注在返回值为Map的getter或field上，会对指定的key对应的值mask */
+        /**
+         * 标注在返回值为Map的getter或field上，会对指定的key对应的值mask
+         */
         String[] maskKeys() default {};
     }
 
     public interface Masked extends Serializable {
-        /** 获取原始值 */
+        /**
+         * 获取原始值
+         */
         Object getOri();
 
-        /** 是否mask */
+        /**
+         * 是否mask
+         */
         boolean masked();
     }
 
@@ -597,7 +611,9 @@ public class ToString {
         }
     }
 
-    /** 包裹Object */
+    /**
+     * 包裹Object
+     */
     public static class MaskedObject extends AbstractMasked {
         private Object ori;
 
@@ -611,7 +627,9 @@ public class ToString {
         }
     }
 
-    /** 包裹String */
+    /**
+     * 包裹String
+     */
     public static class MaskedString extends AbstractMasked {
         private String ori;
 
@@ -627,7 +645,9 @@ public class ToString {
 
     public static class Generator {
 
-        /** 超过此长度的数组元素用...表示 */
+        /**
+         * 超过此长度的数组元素用...表示
+         */
         public static final int TO_STRING_ARRAY_SIZE_THRESHOLD = 50;
 
         public static final int TO_STRING_COLLECTION_SIZE_THRESHOLD = 50;
@@ -841,7 +861,9 @@ public class ToString {
             return copyClass;
         }
 
-        /** 通过需要mask的参数列表，生成field源代码并返回参数名 */
+        /**
+         * 通过需要mask的参数列表，生成field源代码并返回参数名
+         */
         private String maskKeyField(List<String> params) {
             StringBuilder sb = new StringBuilder();
             String fieldName = "maskKeys" + index.incrementAndGet();

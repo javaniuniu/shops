@@ -64,8 +64,8 @@ public class OrderService {
         return page.getResult();
     }
 
-    public List<Order> findOrders(Page<Order> page,Integer userId){
-        page.setResult(orderDao.findByUserId(userId,page.getPageable()).getContent());
+    public List<Order> findOrders(Page<Order> page, Integer userId) {
+        page.setResult(orderDao.findByUserId(userId, page.getPageable()).getContent());
         page.setTotalCount(orderDao.countByUserId(userId));
         return null;
     }

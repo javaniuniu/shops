@@ -22,42 +22,43 @@ import java.util.List;
 @Transactional
 public class ProductService {
 
-	@Autowired
-	ProductTypeRepository productTypeDao;
+    @Autowired
+    ProductTypeRepository productTypeDao;
 
-	@Autowired
-	ProductRepository productDao;
+    @Autowired
+    ProductRepository productDao;
 
-	public void saveType(ProductType type) {
-		productTypeDao.save(type);
-	}
+    public void saveType(ProductType type) {
+        productTypeDao.save(type);
+    }
 
-	public List<ProductType> findType() {
-		return productTypeDao.findAll();
-	}
+    public List<ProductType> findType() {
+        return productTypeDao.findAll();
+    }
 
-	public void save(Product product) {
-		productDao.save(product);
-	}
+    public void save(Product product) {
+        productDao.save(product);
+    }
 
-	public Product findById(Integer id) {
-		return productDao.getOne(id);
-	}
+    public Product findById(Integer id) {
+        return productDao.getOne(id);
+    }
 
-	public List<Product> findAll() {
-		return productDao.findAll();
-	}
+    public List<Product> findAll() {
+        return productDao.findAll();
+    }
 
-	public List<Product> findNew() {
-		return productDao.findByOrderByCreateTimeDesc();
-	}
+    public List<Product> findNew() {
+        return productDao.findByOrderByCreateTimeDesc();
+    }
+
     public List<Product> findOld() {
         return productDao.findByOrderByCreateTimeAsc();
     }
-	
-	public List<Product> findPop(){
-		return productDao.findPopProducts();
-	}
+
+    public List<Product> findPop() {
+        return productDao.findPopProducts();
+    }
 
     public List<Product> findProducts(Page<Product> page) {
         page.setResult(productDao.findAll(page.getPageable()).getContent());

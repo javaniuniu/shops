@@ -8,7 +8,7 @@ package com.javaniuniu.shops.common;
  */
 //TODO 可改成更壮大
 public class Exceptions {
-    public static RuntimeException runtimeException(Exception e){
+    public static RuntimeException runtimeException(Exception e) {
         return unchecked(e);
     }
 
@@ -17,7 +17,7 @@ public class Exceptions {
      */
     private static RuntimeException unchecked(Exception e) {
         if (e instanceof RuntimeException)
-            return (RuntimeException)e;
+            return (RuntimeException) e;
         else
             return new RuntimeException(e);
     }

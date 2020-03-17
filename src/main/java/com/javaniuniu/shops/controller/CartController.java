@@ -37,10 +37,10 @@ public class CartController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String cart(HttpSession session, Model model) {
         HashMap<Integer, CartItem> cartItems = (HashMap<Integer, CartItem>) session.getAttribute(CartUtil.CART);
-        if(cartItems==null){
+        if (cartItems == null) {
             cartItems = Maps.newHashMap();
         }
-        model.addAttribute("cartItems",cartItems);
+        model.addAttribute("cartItems", cartItems);
         return "order/cart";
     }
 

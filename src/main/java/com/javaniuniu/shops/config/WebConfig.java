@@ -28,14 +28,15 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Autowired
     AdminAuthenticationInterceptor adminAuthenticationInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authenticationInterceptor).addPathPatterns(
-                "/user/*","/order/*","/cart/*"
-        ).excludePathPatterns("/user/login","/user/reg","/user/logout");
+                "/user/*", "/order/*", "/cart/*"
+        ).excludePathPatterns("/user/login", "/user/reg", "/user/logout");
         registry.addInterceptor(adminAuthenticationInterceptor).addPathPatterns(
-                "/admin/*","/*/admin/*"
-        ).excludePathPatterns("/admin/login","/admin/reg","/admin/logout");
+                "/admin/*", "/*/admin/*"
+        ).excludePathPatterns("/admin/login", "/admin/reg", "/admin/logout");
 
 
         registry.addInterceptor(appConfigInterceptor).addPathPatterns(

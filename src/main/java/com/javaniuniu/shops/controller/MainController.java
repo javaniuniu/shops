@@ -22,7 +22,7 @@ public class MainController {
     ProductService productService;
 
     @GetMapping("/index")
-    public ModelAndView index(ModelAndView model){
+    public ModelAndView index(ModelAndView model) {
         model = new ModelAndView("index");
         model.addObject("newProductList", productService.findNew());
         model.addObject("popProductList", productService.findPop());
@@ -32,15 +32,14 @@ public class MainController {
     }
 
 
-
-
     /**
      * 页面访问测试方法
+     *
      * @return
      */
     @GetMapping("/sayHello")
     @ResponseBody
-    public String aa(){
+    public String aa() {
         return "hello";
     }
 }

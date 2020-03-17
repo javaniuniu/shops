@@ -37,6 +37,7 @@ public class OrderAdminController {
     OrderService orderService;
     @Autowired
     UserAddressService userAddressService;
+
     /**
      * 订单管理
      *
@@ -49,6 +50,7 @@ public class OrderAdminController {
         model.addAttribute("page", page);
         return "admin/order/orderAdmin";
     }
+
     /**
      * 订单删除
      *
@@ -63,6 +65,7 @@ public class OrderAdminController {
         result.setToSuccess();
         return result;
     }
+
     /**
      * 订单取消
      *
@@ -94,9 +97,6 @@ public class OrderAdminController {
         result.setToSuccess();
         return result;
     }
-
-
-
 
 
 }

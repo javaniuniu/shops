@@ -34,7 +34,7 @@ public class Page<T> {
     protected long totalCount = -1;
 
     // -- 构造函数 --//
-    public Page(int pageNo,int pageSize) {
+    public Page(int pageNo, int pageSize) {
         this.pageNo = pageNo;
         this.pageSize = pageSize;
     }
@@ -273,8 +273,8 @@ public class Page<T> {
     }
 
 
-    public PageRequest getPageable(){
-        PageRequest pageable = PageRequest.of(getPageNo()-1, getPageSize());
+    public PageRequest getPageable() {
+        PageRequest pageable = PageRequest.of(getPageNo() - 1, getPageSize());
         return pageable;
     }
 

@@ -67,7 +67,7 @@ public class ProductAdminController {
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String doNew(Product product, HttpSession session, @RequestParam("file") MultipartFile file) {
-        if (file!=null&&!file.isEmpty()) {
+        if (file != null && !file.isEmpty()) {
             uploadImage(product, session, file);
         }
         product.setInputUser(AdminUtil.getAdminFromSession(session));
@@ -85,8 +85,8 @@ public class ProductAdminController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public ModelAndView doEdit(ModelAndView model, Product product, HttpSession session, @RequestParam(name = "file",required = false) MultipartFile file) {
-        if (file!=null&&!file.isEmpty()) {
+    public ModelAndView doEdit(ModelAndView model, Product product, HttpSession session, @RequestParam(name = "file", required = false) MultipartFile file) {
+        if (file != null && !file.isEmpty()) {
             uploadImage(product, session, file);
         }
         product.setInputUser(AdminUtil.getAdminFromSession(session));
@@ -112,7 +112,7 @@ public class ProductAdminController {
             if (!new File(uploadingDir).exists()) {
                 new File(uploadingDir).mkdirs();
             }
-            String serverFile = uploadingDir+"/"+fileName;
+            String serverFile = uploadingDir + "/" + fileName;
             if (!new File(serverFile).exists()) {
                 new File(serverFile).createNewFile();
             }
@@ -123,7 +123,7 @@ public class ProductAdminController {
             stream.close();
             //缩放处理
             Image image = new Image(serverFile);
-            image.resize(Constants.IMG_WIDTH,Constants.IMG_HEIGHT);
+            image.resize(Constants.IMG_WIDTH, Constants.IMG_HEIGHT);
             image.save();
         } catch (Exception e) {
             e.printStackTrace();

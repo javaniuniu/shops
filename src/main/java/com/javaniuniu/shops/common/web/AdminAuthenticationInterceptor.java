@@ -20,9 +20,10 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class AdminAuthenticationInterceptor extends HandlerInterceptorAdapter {
     private Logger logger = LoggerFactory.getLogger(AdminAuthenticationInterceptor.class);
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (AdminUtil.getAdminFromSession(request.getSession())==null){
+        if (AdminUtil.getAdminFromSession(request.getSession()) == null) {
             logger.info("管理员未登录,跳转到登录页面.");
             response.sendRedirect("/admin/login");
             return false;
